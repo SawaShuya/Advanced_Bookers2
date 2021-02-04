@@ -1,5 +1,5 @@
-<table class='table table-hover table-inverse'>
-  <thead>
+<table class='table table-hover'>
+  <thead class = "thead-light">
     <tr> 
       <th></th>
       <th>Title</th>
@@ -20,17 +20,15 @@
         <td>
           <% if book.favorited_by?(current_user) %>
             <%= link_to book_favorites_path(book, redirect_id: 0), method: :delete do %>
-              <%#= fa_icon "heart", text: "#{book.favorites.count}", style: "color: red;" %>
-              <span class="glyphicon glyphicon-heart"><%= book.favorites.count%></span>
+              <i class="fas fa-heart" style = "color: red;"></i><%= book.favorites.count%>
             <% end %>
           <% else %>
             <%= link_to book_favorites_path(book, redirect_id: 0), method: :post do %>
-              <%#= fa_icon "heart-o", text: "#{book.favorites.count}", style: "color: red;" %>
-              <span class="glyphicon glyphicon-heart-empty"><%= book.favorites.count %></span>
+               <i class="far fa-heart"></i><%= book.favorites.count %>
             <% end %>
           <% end %>
         </td>
-        <td>コメント数：<%= book.postcomments.count %></td>
+        <td>コメント数：<%= book.book_comments.count %></td>
       </tr>
     <% end %>
   </tbody>

@@ -12,6 +12,14 @@
 
 ActiveRecord::Schema.define(version: 20200602023517) do
 
+  create_table "book_comments", force: :cascade do |t|
+    t.text     "body"
+    t.integer  "user_id"
+    t.integer  "book_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "books", force: :cascade do |t|
     t.string   "title"
     t.text     "body"
@@ -21,14 +29,6 @@ ActiveRecord::Schema.define(version: 20200602023517) do
   end
 
   create_table "favorites", force: :cascade do |t|
-    t.integer  "user_id"
-    t.integer  "book_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "postcomments", force: :cascade do |t|
-    t.text     "comment"
     t.integer  "user_id"
     t.integer  "book_id"
     t.datetime "created_at", null: false
