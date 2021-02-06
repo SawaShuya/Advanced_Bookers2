@@ -8,4 +8,17 @@ class Book < ApplicationRecord
 		favorites.where(user_id: user.id).exists?
 	end
 
+
+	def self.search_books(word, level)
+    if level == 0
+      @contens = Book.where(["title LIKE?", "#{word}"])
+    elsif level == 1
+      @contens = Book.where(["title LIKE?", "#{word}%"])
+    elsif level == 2
+      @contens = Book.where(["title LIKE?", "%#{word}"])
+    elsif level == 3
+      @contens = Book.where(["title LIKE?", "%#{word}%"])
+    end
+  end
+
 end

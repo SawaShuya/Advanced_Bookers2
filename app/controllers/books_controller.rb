@@ -43,6 +43,17 @@ class BooksController < ApplicationController
     redirect_to books_url
   end
 
+  def search_contents
+    if params[:search_model].to_i == 0
+      @contents = User.search_users(params[:search_word], params[:search_level].to_i)
+    elsif params[:search_model].to_i == 1
+      @contents = Book.search_books(params[:search_word], params[:search_level].to_i)
+    end
+    render "search_contents"
+  end
+
+
+
   private
     def book_params
       params.require(:book).permit(:title, :body)
