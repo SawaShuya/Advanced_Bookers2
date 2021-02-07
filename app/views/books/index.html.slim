@@ -1,0 +1,15 @@
+= render 'layouts/errors', obj: @book
+.row
+  .col-md-3
+    h2
+      | User info
+    = render 'users/info', user: current_user
+    h2
+      | New book
+    = render 'form', book: @book
+  .col-md-8.offset-md-1
+    = render "books/search"
+    h2
+      | Books
+    .book_index
+      = render 'index', books: @books ,redirect_id: 0

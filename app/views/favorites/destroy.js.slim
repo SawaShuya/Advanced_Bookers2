@@ -1,0 +1,5 @@
+| $(".book_detail").html("
+= j(render("books/detail", book: @book))
+| ") $(".book_index").html("
+= j(render("books/index", books: @books, redirect_id: @redirect_id))
+| ") 

@@ -1,0 +1,9 @@
+= form_for(book) do |f|
+  .field.row
+    = f.label :title
+    = f.text_field :title, class: 'col-12 book_title'
+  .field.row
+    = f.label :opinion
+    = f.text_area :body, class: 'col-12 book_body'
+  .actions.row
+    = f.submit class: 'btn btn-primary col-12'

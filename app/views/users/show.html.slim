@@ -1,0 +1,14 @@
+.row
+  .col-3
+    h2
+      | User info
+    = render 'info', user: @user,now: ''
+    h2
+      | New book
+    = render 'books/form', book: @book
+  .col-8.offset-md-1
+    .user_books
+      h2
+        | Books
+      .book_index
+        = render 'books/index',books: @books, redirect_id: 1

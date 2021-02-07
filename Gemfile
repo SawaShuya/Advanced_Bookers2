@@ -68,3 +68,9 @@ gem 'jquery-rails'
 gem 'font-awesome-sass', '~> 5.13'
 
 gem 'rails-ujs'
+
+#railsでslimを利用するためのgem
+gem 'slim-rails'
+
+#html.erbをhtmle.slimに変換するためのgem
+gem 'html2slim'

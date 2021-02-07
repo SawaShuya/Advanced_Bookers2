@@ -1,0 +1,21 @@
+- if params[:search_model].to_i == 0
+  h3
+    | User search for "
+    = params[:search_word]
+    | "
+  - if @contents.present?
+    = render "users/index", users: @contents
+  - else
+    p
+      | 存在しません。検索ワード、条件を見直してください
+- elsif params[:search_model].to_i == 1
+  h3
+    | Book search for "
+    = params[:search_word]
+    | "
+  - if @contents.present?
+    = render "books/index", books: @contents
+  - else
+    p
+      | 存在しません。検索ワード、条件を見直してください
+= link_to "戻る", :back, class: "btn btn-primary"

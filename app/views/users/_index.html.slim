@@ -1,0 +1,32 @@
+table.table.table-hover
+  thead.thead-light
+    tr
+      th
+        | image
+      th
+        | name
+      th
+      th
+      th
+      th
+  tbody
+    - users.each do |user|
+      tr
+        td
+          = attachment_image_tag(user, :profile_image, :fill, 50, 50, fallback: "no-image-icon.jpg")
+        td
+          = user.name
+        td
+          | フォロー数：
+          = user.following.count
+        td
+          | フォロワー数：
+          = user.followed.count
+        td
+          - unless user == current_user
+            - if user.followed_users.where(id: current_user.id).present?
+              = link_to "フォローを外す", user_relationship_path(user, current_user), class: "btn btn-outline-dark", method: :delete
+            - else
+              = link_to "フォローする", user_relationships_path(user.id), class: "btn btn-primary", method: :post
+        td
+          = link_to 'Show', user, class: "user_#{user.id}"

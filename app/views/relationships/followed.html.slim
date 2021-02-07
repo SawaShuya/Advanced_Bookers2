@@ -1,0 +1,29 @@
+h3
+  | フォロワー
+- if @followed_users.present?
+  table.table
+    tr
+      th
+        | image
+      th
+        | name
+      th
+      th
+      th
+    - @followed_users.each do |followed_user|
+      tr
+        td
+          = attachment_image_tag(followed_user, :profile_image, :fill, 50, 50, fallback: "no-image-icon.jpg")
+        td
+          = followed_user.name
+        td
+          | フォロー数： 
+          = followed_user.following.count
+        td
+          | フォロワー数： 
+          = followed_user.followed.count
+        td
+          = link_to "show", user_path(followed_user)
+- else
+  p
+    | フォロワーがいません

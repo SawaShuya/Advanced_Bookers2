@@ -1,0 +1,13 @@
+.row
+  .col-3
+    h2
+      | User info
+    = render 'info', user: current_user
+    h2
+      | New book
+    = render 'books/form', book: @book
+  .col-8.offset-md-1
+    = render "books/search"
+    h2
+      | Users
+    = render 'index',users: @users
