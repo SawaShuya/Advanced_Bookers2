@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   	resource :favorites, only: [:create, :destroy]
     resources :book_comments, only: [:create, :destroy]
   end
-  post "/search_contents" => "books#search_contents", as: "search_contents"
+  post "/search_contents" => "search#search_contents", as: "search_contents"
   root 'home#top'
   get 'home/about'
 
