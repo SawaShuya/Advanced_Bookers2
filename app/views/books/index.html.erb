@@ -12,8 +12,10 @@
   
   <div class='col-md-8 offset-md-1'>
     <%= render "books/search" %>
+    
     <h2>Books</h2>
-
-    <%= render 'index', books: @books%>
+    <div class = "book_index">
+      <%= render 'index', books: @books ,redirect_id: 0 %>
+    </div>
   </div>
 </div>

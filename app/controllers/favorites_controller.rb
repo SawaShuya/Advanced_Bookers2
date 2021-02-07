@@ -1,26 +1,39 @@
 class FavoritesController < ApplicationController
+	before_action :redirect
 
-    def create
-	    @book = Book.find(params[:book_id])
-	    favorite = @book.favorites.new(user_id: current_user.id)
-	    favorite.save
-	    redirect_to request.referer
-    end
-    def destroy
-	    @book = Book.find(params[:book_id])
-	    favorite = current_user.favorites.find_by(book_id: @book.id)
-	    favorite.destroy
-	    redirect_to request.referer
-    end
+	def create
+		favorite = @book.favorites.new(user_id: current_user.id)
+		respond_to do |format|
+			if favorite.save
+				format.html { redirect_to request.referer }
+				format.js
+			end
+		end	    
+	end
+
+	def destroy
+		favorite = current_user.favorites.find_by(book_id: @book.id)
+		
+		respond_to do |format|
+			if favorite.destroy
+				format.html { redirect_to request.referer }
+				format.js
+			end
+		end
+	end
 
 
-    private
+	private
 	def redirect
-	    case params[:redirect_id].to_i
-	    when 0
-	      redirect_to books_path
-	    when 1
-	      redirect_to book_path(@book)
-	    end
+		@book = Book.find(params[:book_id])
+		if params[:redirect_id].present?
+			if params[:redirect_id].to_i == 0 
+				@books = Book.all
+				@redirect_id = 0
+			elsif params[:redirect_id].to_i == 1
+				@books = @book.user.books
+				@redirect_id = 1
+			end
+		end
 	end
 end

@@ -10,8 +10,11 @@
   </div>
 
   <div class='col-8 offset-md-1'>
-    <h2>Books</h2>
-
-    <%= render 'books/index',books: @books %>
+    <div class = "user_books">
+      <h2>Books</h2>
+      <div class = "book_index">
+        <%= render 'books/index',books: @books, redirect_id: 1 %>
+      </div>
+    </div>
   </div>
 </div>
