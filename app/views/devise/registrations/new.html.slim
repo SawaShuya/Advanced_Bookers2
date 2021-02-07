@@ -1,7 +1,7 @@
 h2
   | Sign up
 = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
-  = devise_error_messages!
+  = render "devise/shared/error_messages", resource: resource
   .field
     = f.label :name
     br
@@ -10,6 +10,27 @@ h2
     = f.label :email
     br
     = f.email_field :email, autofocus: true, class: "email"
+
+  .field 
+    = f.label :postal_code
+    br/
+    = f.text_field :postal_code, autofocus: true, class: "postal_code", id: "address_zipcode"
+
+  .field 
+    = f.label :prefecture_code
+    br/
+    = f.collection_select :prefecture_code, JpPrefecture::Prefecture.all, :name, :name, autofocus: true, class: "address", id: "address_prefecture_name"
+
+  .field 
+    = f.label :city
+    br/
+    = f.text_field :city, autofocus: true, class: "address", id:"address_city"
+
+  .field 
+    = f.label :street
+    br/
+    = f.text_field :street, autofocus: true, class: "address", id: "address_street"
+
   .field
     = f.label :password
     - if @minimum_password_length
