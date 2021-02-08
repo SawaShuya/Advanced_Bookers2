@@ -76,3 +76,5 @@ gem 'slim-rails'
 gem 'html2slim'
 
 gem "jp_prefecture"
+
+gem 'dotenv-rails'

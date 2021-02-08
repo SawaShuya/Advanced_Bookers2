@@ -25,7 +25,7 @@
 
 
 $(function() {
-  // $(document).on('turbolinks:load', () => {
+  $(document).on('turbolinks:load', function () {
     $("#address_postal_code").jpostal({
       postcode: ["#address_postal_code"],
       address: {
@@ -34,5 +34,5 @@ $(function() {
         "#address_street": "%6%7"
       }
     });
-  // });
+  });
 });
