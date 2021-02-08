@@ -28,7 +28,7 @@ class FavoritesController < ApplicationController
 		@book = Book.find(params[:book_id])
 		if params[:redirect_id].present?
 			if params[:redirect_id].to_i == 0 
-				@books = Book.all
+				@books = Book.all.includes(:user)
 				@redirect_id = 0
 			elsif params[:redirect_id].to_i == 1
 				@books = @book.user.books

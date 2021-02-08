@@ -74,3 +74,5 @@ gem 'slim-rails'
 
 #html.erbをhtmle.slimに変換するためのgem
 gem 'html2slim'
+
+gem "jp_prefecture"

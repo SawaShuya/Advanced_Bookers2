@@ -2,7 +2,7 @@ class BooksController < ApplicationController
   before_action :authenticate_user!,only: [:create,:edit,:update,:destroy,:index]
 
   def index
-    @books = Book.all
+    @books = Book.all.includes(:user)
     @book = Book.new
   end
 
@@ -23,7 +23,7 @@ class BooksController < ApplicationController
     if @book.save
       redirect_to @book
     else
-      @books = Book.all
+      @books = Book.all.includes(:user)
       render 'index'
     end
   end
