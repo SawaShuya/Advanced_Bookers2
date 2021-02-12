@@ -1,8 +1,13 @@
 class MessagesController < ApplicationController
   def create
     @message = Message.new(message_params)
+    @messages = @message.room.messages
     @message.save
-    redirect_to room_path(@message.room)
+
+    respond_to do |format|
+      format.html { redirect_to request.referer }
+      format.js
+    end
   end
 
   private

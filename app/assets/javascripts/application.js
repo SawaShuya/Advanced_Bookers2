@@ -11,12 +11,12 @@
 // about supported directives.
 //
 
-
+//= require jquery3
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
-//= require jquery3
-//= require jquery_ujs
+
+
 //= require jquery.jpostal 
 //= require popper
 //= require bootstrap-sprockets
@@ -38,8 +38,6 @@ $(function() {
 });
 
 $(function() {
-  $(document).on('turbolinks:load', function () {
-    $(".message_box").scrollTop($(".message_box")[0].scrollHeight)
-  });
+  $(".message_box").scrollTop($(".message_box")[0].scrollHeight)
 });
 
