@@ -36,3 +36,10 @@ $(function() {
     });
   });
 });
+
+$(function() {
+  $(document).on('turbolinks:load', function () {
+    $(".message_box").scrollTop($(".message_box")[0].scrollHeight)
+  });
+});
+

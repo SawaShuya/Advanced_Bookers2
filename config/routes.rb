@@ -12,6 +12,12 @@ Rails.application.routes.draw do
   	resource :favorites, only: [:create, :destroy]
     resources :book_comments, only: [:create, :destroy]
   end
+
+  resources :rooms, only: [:show, :index]
+  post "/set_room" => "rooms#set_room", as: "set_room"
+
+  resources :messages, only: [:create]
+
   post "/search_contents" => "search#search_contents", as: "search_contents"
   root 'home#top'
   get 'home/about'

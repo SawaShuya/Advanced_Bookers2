@@ -12,6 +12,8 @@ header
             li.nav-item
               = link_to ' Users',users_path, class: 'fas fa-user-alt nav-link text-light'
             li.nav-item
+              = link_to ' Messages',rooms_path , class: 'fas fa-paper-plane nav-link text-light'
+            li.nav-item
               = link_to ' Books',books_path , class: 'fas fa-book nav-link text-light'
             li.nav-item
               = link_to ' logout', destroy_user_session_path, method: :delete, class: 'fas fa-sign-out-alt nav-link text-light'

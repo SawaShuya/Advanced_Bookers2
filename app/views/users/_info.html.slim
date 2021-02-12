@@ -27,9 +27,16 @@ table.table
         | 人 
 .row
   - if user == current_user
-    = link_to '',edit_user_path(user),class: "col-12 btn btn-outline-dark fas fa-user-edit edit_user_#{user.id}"
+    = link_to '', edit_user_path(user),class: "col-12 btn btn-outline-dark fas fa-user-edit edit_user_#{user.id}"
+    
   - else
     - if user.followed_users.where(id: current_user.id).present?
       = link_to "フォローを外す", user_relationship_path(user, current_user), class: "col-12 btn btn-outline-dark", method: :delete
     - else
       = link_to "フォローする", user_relationships_path(user.id), class: "col-12 btn btn-primary", method: :post
+
+    = link_to "チャットルームへ", set_room_path(user_id: user.id), method: :post, class: "col-12 btn btn-outline-primary"
+
+
+  
+

@@ -1,0 +1,15 @@
+= render 'layouts/errors', obj: @book
+.row
+  .col-md-3
+    h2
+      | User info
+    = render 'users/info', user: current_user
+    h2
+      | New book
+    = render 'books/form', book: @book
+
+  .col-md-8.offset-md-1
+    h2
+      | Talk Rooms
+    .room_index
+      = render 'index', rooms: @rooms

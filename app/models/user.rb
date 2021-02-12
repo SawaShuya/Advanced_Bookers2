@@ -17,6 +17,12 @@ class User < ApplicationRecord
   has_many :followed, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
   has_many :followed_users, through: :followed, source: :following
 
+  has_many :entries, dependent: :destroy
+  has_many :rooms, through: :entries, dependent: :destroy
+
+  has_many :messages, dependent: :destroy
+
+
 
   def self.search_users(word, level)
     if level == 0
@@ -29,5 +35,7 @@ class User < ApplicationRecord
       @contens = User.where(["name LIKE?", "%#{word}%"])
     end
   end
+
+
 
 end 
