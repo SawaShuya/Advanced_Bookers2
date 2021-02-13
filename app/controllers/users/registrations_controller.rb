@@ -53,7 +53,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # The path used after sign up.
   def after_sign_up_path_for(resource)
       flash[:notice] = "Welcome! Sign up successfully! We sent e-mail to your e-mail address!"
-      NotificationMailer.send_confirm_to_user(current_user).deliver
+      ThanksMailer.send_confirm_to_user(current_user).deliver
       user_path(resource)
   end
 
