@@ -78,3 +78,5 @@ gem 'html2slim'
 gem "jp_prefecture"
 
 gem 'dotenv-rails'
+
+gem 'whenever', require: false
