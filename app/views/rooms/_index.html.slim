@@ -3,14 +3,16 @@ table.table.table-hover
     - rooms.each do |room|
       tr.room#{room.id}
         td style = "width: 20%"
-          - member = room.companion(current_user)
+          - member = room.companion_for(current_user)
           = attachment_image_tag(member, :profile_image, size: "50x50", fallback: "no-image-icon.jpg")
         td style = "width: 20%"
           = link_to member.name, room_path(room)
 
         td.text-black-50 style = "width: 40%"
-          - last_message = room.messages.last
-          = last_message.body
+          - last_message = room.chats.last
+          -if last_message.present?
+            = last_message.body
 
         td.text-black-50 style = "width: 20%"
-          = last_message.created_at.strftime("%m/%d %H:%M")
+          -if last_message.present?
+            = last_message.created_at.strftime("%m/%d %H:%M")

@@ -4,11 +4,11 @@
     = @member.name
     
  
-.message_box.w-100.border.border-dark.overflow-auto.p-2 style = "height: 500px;"
-  = render "messages/index", messages: @messages
+.message_box.container.w-100.border.border-dark.overflow-auto style = "height: 500px;"
+  = render "chats/index", messages: @chats
   
 .row.mt-2
-  = form_for(@message, html: {class: "form-inline"}, remote: true) do |f|
+  = form_for(@chat, html: {class: "form-inline"}, remote: true) do |f|
     
     = f.text_field :body, class: "mr-2 form-control input_message", size: "100"
     = f.hidden_field :user_id, :value => current_user.id 
