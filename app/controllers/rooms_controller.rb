@@ -2,9 +2,9 @@ class RoomsController < ApplicationController
   before_action :screen_user, only: [:show]
 
   def show
-    @messages = @room.messages
-    @message = Message.new
-    @member = @room.companion(current_user)
+    @chats = @room.chats
+    @chat =Chat.new
+    @member = @room.companion_for(current_user)
   end
 
   def index
@@ -21,7 +21,7 @@ class RoomsController < ApplicationController
       room = Room.find(room_id)
     else
       room = Room.new
-      entries = room.entries.build([{user_id: current_user.id}, {user_id: user.id}])
+      user_rooms = room.user_rooms.build([{user_id: current_user.id}, {user_id: user.id}])
       room.save
     end
     
@@ -31,7 +31,7 @@ class RoomsController < ApplicationController
   private
   def screen_user
     @room = Room.find(params[:id])
-    member_ids = @room.entries.pluck(:user_id)
+    member_ids = @room.user_rooms.pluck(:user_id)
     unless member_ids.find {|id| id == current_user.id }.present?
       redirect_to rooms_path
     end

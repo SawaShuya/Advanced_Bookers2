@@ -1,6 +1,6 @@
 - messages.each do |message|
   - if message.user == current_user
-    .row.mb-2
+    .row.mt-2
       .col-5.offset-7.text-right style = "height: 70px;"
         .message_body.card style = "display: inline-block;"
           .card-body.p-2.text-left
@@ -8,10 +8,10 @@
         .message_time
           = message.created_at.strftime("%m/%d %H:%M")
   - else
-    .row.mb-2
+    .row.mt-2
       .col-5.mb-2 style = "height: 70px;"
-        .user_img style = "display: inline-block;"
-          = attachment_image_tag(message.user, :profile_image, size: "50x50", fallback: "no-image-icon.jpg")
+        .user_img.mr-2 style = "display: inline-block;"
+          = attachment_image_tag(message.user, :profile_image, size: "50x50", fallback: "no-image-icon.jpg", class: "rounded")
         .message_body.card style = "display: inline-block;"
           .card-body.p-2
             = message.body

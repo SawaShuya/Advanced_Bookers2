@@ -1,11 +1,11 @@
 class Room < ApplicationRecord
-  has_many :entries, dependent: :destroy
-  has_many :users, through: :entries
+  has_many :user_rooms, dependent: :destroy
+  has_many :users, through: :user_rooms
 
-  has_many :messages, dependent: :destroy
+  has_many :chats, dependent: :destroy
 
 
-  def companion(current_user)
+  def companion_for(current_user)
     self.users.each do |user|
       unless user == current_user
         return user
@@ -19,7 +19,7 @@ class Room < ApplicationRecord
     room_id = nil
 
     rooms.each do |room|
-      if room.entries.find_by(user_id: companion_user.id)
+      if room.user_rooms.find_by(user_id: companion_user.id)
         room_id = room.id
         break
       end
