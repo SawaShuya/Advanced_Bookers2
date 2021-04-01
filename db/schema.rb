@@ -12,7 +12,10 @@
 
 ActiveRecord::Schema.define(version: 2021_02_11_142455) do
 
-  create_table "book_comments", force: :cascade do |t|
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "book_comments", id: :serial, force: :cascade do |t|
     t.text "body"
     t.integer "user_id"
     t.integer "book_id"
@@ -20,7 +23,7 @@ ActiveRecord::Schema.define(version: 2021_02_11_142455) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "books", force: :cascade do |t|
+  create_table "books", id: :serial, force: :cascade do |t|
     t.string "title"
     t.text "body"
     t.datetime "created_at", null: false
@@ -36,14 +39,14 @@ ActiveRecord::Schema.define(version: 2021_02_11_142455) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "favorites", force: :cascade do |t|
+  create_table "favorites", id: :serial, force: :cascade do |t|
     t.integer "user_id"
     t.integer "book_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "relationships", force: :cascade do |t|
+  create_table "relationships", id: :serial, force: :cascade do |t|
     t.integer "following_id"
     t.integer "followed_id"
     t.datetime "created_at", null: false
@@ -62,7 +65,7 @@ ActiveRecord::Schema.define(version: 2021_02_11_142455) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "users", force: :cascade do |t|
+  create_table "users", id: :serial, force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"

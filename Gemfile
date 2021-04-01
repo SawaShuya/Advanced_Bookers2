@@ -34,7 +34,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 group :production do
   #for heroku
-  gem 'pg', '~> 1.2.3'
+  # gem 'pg', '~> 1.2.3'
 end
 
 group :development, :test do
@@ -42,6 +42,7 @@ group :development, :test do
   gem 'byebug', platform: :mri
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3', "~> 1.3.6"
+  gem 'pg', '~> 1.1'
 end
 
 group :development do
