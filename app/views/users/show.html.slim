@@ -1,3 +1,7 @@
+= javascript_include_tag 'googlemap'
+- google_api = "https://maps.googleapis.com/maps/api/js?key=#{ ENV['GOOGLE_MAP_API'] }&callback=initMap".html_safe
+script{ async src=google_api }
+
 .row
   .col-3
     h2
@@ -12,3 +16,17 @@
         | Books
       .book_index
         = render 'books/index',books: @books, redirect_id: 1
+
+    .user-location
+      - if @user == current_user
+        h2
+          | User Location
+
+        #map style='height: 300px;'
+
+
+
+
+
+
+

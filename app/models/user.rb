@@ -36,6 +36,21 @@ class User < ApplicationRecord
     end
   end
 
+  def address
+    # [postal_code, city, prefecture_name].compact.join(', ')
+    self.prefecture_name + self.city + self.street
+  end
 
+  # def geo_tag
+  #   rusults = Geocoder.search(self.address).first
+  # end
 
-end 
+  def latitude
+    Geocoder.search(self.address).first.latitude
+  end
+
+  def longitude
+    Geocoder.search(self.address).first.longitude
+  end
+
+end

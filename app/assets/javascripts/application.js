@@ -17,11 +17,10 @@
 //= require turbolinks
 
 
-//= require jquery.jpostal 
+//= require jquery.jpostal
 //= require popper
 //= require bootstrap-sprockets
 
-//= require_tree .
 
 
 $(function() {
@@ -37,7 +36,6 @@ $(function() {
   });
 });
 
-$(function() {
-  $(".message_box").scrollTop($(".message_box")[0].scrollHeight)
-});
+
+
 

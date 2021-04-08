@@ -14,7 +14,10 @@ services:
       - "3000:3000"
     volumes:
       - .:/myproject
+      - bundle:/usr/local/bundle
     depends_on:
       - postgres_infratop
     stdin_open: true
     tty: true
+volumes:
+  bundle:
