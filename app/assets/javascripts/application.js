@@ -20,6 +20,7 @@
 //= require jquery.jpostal
 //= require popper
 //= require bootstrap-sprockets
+//= require jquery.raty.js
 
 
 
@@ -51,6 +52,25 @@ $(function () {
     $('.user_image').change(function () {
       readURL(this);
     });
+  });
+});
+
+$(document).on('turbolinks:load', function () {
+  $('#star').raty({
+    size: 40,
+    path: '/assets/',
+    scoreName: 'book[rate]',
+    half: true,
+  });
+
+  $('.book-rate').raty({
+    size: 20,
+    path: '/assets/',
+    readOnly: true,
+    score: function() {
+      return $(this).attr('data-score');
+    },
+    half: true,
   });
 });
 

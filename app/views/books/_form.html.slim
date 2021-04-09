@@ -5,5 +5,8 @@
   .field.row
     = f.label :opinion
     = f.text_area :body, class: 'col-12 book_body'
+  .field#star
+    = f.label :rate
+    = f.hidden_field :rate, id: :review_star
   .actions.row
     = f.submit class: 'btn btn-primary col-12'

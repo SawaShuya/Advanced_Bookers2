@@ -11,6 +11,7 @@ table.table
       = link_to book.title, book
     td
       = book.body
+    td.book-rate data-score="#{book.rate}"
     td
       - if book.favorited_by?(current_user)
         = link_to book_favorites_path(book, redirect_id: 0), method: :delete, remote: true do
